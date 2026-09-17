@@ -1,0 +1,11 @@
+{
+  "name": "make-wordpress-network-prototypes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate.mjs && node scripts/generate-review-board.mjs && node scripts/generate-synthesis.mjs",
+    "build:share": "npm run build && node scripts/generate-share-site.mjs",
+    "start": "node server.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

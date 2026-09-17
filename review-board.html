@@ -1,0 +1,197 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Review board · Make WordPress concepts</title><style>
+:root{--blue:#3858e9;--deep:#213fd4;--ink:#1e1e1e;--muted:#656a71;--line:#d9d9d9;--soft:#f6f6f6;--charcoal:#23282d;--card-min:270px}*{box-sizing:border-box}html{background:#ececec}body{margin:0;color:var(--ink);background:#fff;font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}a{color:var(--blue)}.global{height:70px;background:var(--charcoal);color:#fff;display:flex;align-items:center;padding:0 clamp(24px,5.5556vw,80px);gap:20px}.mark{width:28px;height:28px}.global strong{font-weight:500}.global nav{margin-left:auto;display:flex;gap:22px}.global a{color:#fff;text-decoration:none}.intro{padding:54px clamp(24px,5.5556vw,80px) 40px;border-bottom:1px solid var(--line)}.eyebrow{margin:0 0 8px;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.intro h1{margin:0;font:400 50px/1.08 Georgia,"Times New Roman",serif}.intro>p:last-child{max-width:720px;margin:18px 0 0;font-size:17px;color:#40464d}.toolbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:18px;padding:12px clamp(24px,5.5556vw,80px);border-bottom:1px solid var(--line);background:rgba(255,255,255,.96);backdrop-filter:blur(12px)}.progress{min-width:205px}.progress strong{display:block}.progress span{color:var(--muted)}.meter{flex:1;max-width:260px;height:5px;background:#e5e5e5}.meter i{display:block;width:0;height:100%;background:var(--blue);transition:width .2s}.zoom{display:flex;align-items:center;gap:8px;margin-left:auto}.zoom input{width:130px}.tool-button{border:1px solid #8c8f94;background:#fff;padding:7px 11px}.tool-button:hover{border-color:var(--ink)}.board{padding:30px clamp(24px,5.5556vw,80px) 90px;background:#ececec}.zone{min-height:180px;border:1px solid #c3c4c7;background:#f8f8f8;padding:18px}.zone.drag-over{outline:3px solid var(--blue);outline-offset:-3px}.zone-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px}.zone-head h2{margin:0;font:400 27px/1.2 Georgia,serif}.zone-head span{color:var(--muted)}.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-min)),1fr));gap:16px;align-items:start}.unreviewed{margin-bottom:24px}.decision-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.decision-grid .card-grid{grid-template-columns:1fr}.review-card{overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.04)}.review-card.dragging{opacity:.45}.card-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px}.number{font-weight:700}.tier{border:1px solid #8c8f94;padding:2px 6px;font-size:10px;letter-spacing:.08em;text-transform:uppercase}.tier.outlier{background:var(--ink);color:#fff}.preview{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-block:1px solid var(--line);background:#fff}.preview iframe{position:absolute;inset:0;width:400%;height:400%;border:0;transform:scale(.25);transform-origin:0 0;pointer-events:none}.preview>span{position:absolute;right:8px;bottom:8px;padding:5px 8px;background:rgba(35,40,45,.92);color:#fff;font-size:11px;opacity:0;transition:opacity .15s}.preview:hover>span,.preview:focus-visible>span{opacity:1}.card-copy{padding:15px 15px 10px}.card-copy h3{margin:0 0 5px;font:400 24px/1.15 Georgia,serif}.card-copy p{margin:0;color:var(--muted);min-height:42px}.reactions{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}.reactions button{border:0;background:#fff;padding:9px 4px}.reactions button:hover{background:#eff2ff}.review-card[data-status=keep] [data-set=keep],.review-card[data-status=maybe] [data-set=maybe],.review-card[data-status=kill] [data-set=kill]{background:var(--blue);color:#fff;font-weight:700}.review-card details{border-top:1px solid var(--line);padding:9px 14px}.review-card summary{color:var(--blue);cursor:pointer}.review-card textarea{width:100%;margin-top:8px;padding:8px;border:1px solid #8c8f94;resize:vertical}.empty{display:none;color:var(--muted);padding:16px;text-align:center;border:1px dashed #c3c4c7}.card-grid:empty+.empty{display:block}.tip{margin:0 0 18px;color:#50575e}.sr-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:1100px){.decision-grid{grid-template-columns:1fr}.decision-grid .card-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--card-min)),1fr))}}@media(max-width:700px){.global{height:60px}.global nav{display:none}.intro h1{font-size:38px}.toolbar{align-items:flex-start;flex-wrap:wrap}.zoom{margin-left:0}.meter{order:3;flex-basis:100%;max-width:none}.board{padding-inline:16px}.intro,.toolbar{padding-inline:20px}}
+</style></head><body><header class="global"><svg class="mark" viewBox="0 0 28 28" aria-label="WordPress.org"><path fill="currentColor" d="M13.605.924a12.69 12.69 0 1 1 0 25.38 12.69 12.69 0 0 1 0-25.38Zm0-.81a13.5 13.5 0 1 0 0 27 13.5 13.5 0 0 0 0-27Z"/><path fill="currentColor" d="M2.36 13.613a11.25 11.25 0 0 0 6.345 10.125L3.332 9.037A11.2 11.2 0 0 0 2.36 13.613Zm18.846-.567c0-1.39-.5-2.349-.931-3.105-.432-.756-1.107-1.714-1.107-2.632 0-.918.783-1.998 1.89-1.998h.148A11.25 11.25 0 0 0 4.21 7.43h.729c1.174 0 2.997-.148 2.997-.148.607-.041.675.85.067.931 0 0-.607.068-1.282.108l4.09 12.191 2.457-7.385-1.755-4.806c-.607-.04-1.174-.108-1.174-.108-.608-.04-.54-.958.067-.931 0 0 1.863.148 2.957.148s2.997-.148 2.997-.148c.607-.041.675.85.067.931 0 0-.607.068-1.282.108l4.063 12.096 1.161-3.672c.513-1.606.824-2.74.824-3.713l.013.014Zm-7.411 1.539-3.375 9.815a11.25 11.25 0 0 0 6.912-.176l-.081-.148-3.456-9.491Zm9.679-6.372c.054.378.081.77.081 1.161 0 1.148-.216 2.43-.85 4.023l-3.443 9.936a11.25 11.25 0 0 0 4.212-15.12Z"/></svg><strong>Make WordPress concept study</strong><nav><a href="index.html">Gallery</a><a href="README.md">Brief</a></nav></header><section class="intro"><p class="eyebrow">PRUNE THE OPTION SPACE</p><h1>Prototype review board</h1><p>Scan every concept, open the live version in a new tab, then move it to Keep, Maybe, or Kill. Decisions and notes stay in this browser.</p></section><div class="toolbar"><div class="progress"><strong><span id="reviewed">0</span> of 20 reviewed</strong><span><span data-count="keep">0</span> keep · <span data-count="maybe">0</span> maybe · <span data-count="kill">0</span> kill</span></div><div class="meter" aria-hidden="true"><i id="meter"></i></div><label class="zoom">Card size <input id="zoom" type="range" min="220" max="430" value="270"></label><button class="tool-button" id="download">Download feedback</button><button class="tool-button" id="clear">Clear feedback</button></div><main class="board"><p class="tip">Drag cards between sections or use the three decision buttons. Select a preview to open the working prototype.</p><section class="zone unreviewed" data-zone="unreviewed" aria-labelledby="unreviewed-title"><div class="zone-head"><h2 id="unreviewed-title">Unreviewed</h2><span><span data-count="unreviewed">20</span> concepts</span></div><div class="card-grid">
+<article class="review-card" draggable="true" data-id="01" data-status="unreviewed">
+  <div class="card-head"><span class="number">01</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/01-pulse.html" target="_blank" rel="noopener" aria-label="Open My Make pulse prototype in a new tab">
+    <iframe src="mockups/01-pulse.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>My Make pulse</h3><p>Balances selected teams, meetings, and fresh posts.</p></div>
+  <div class="reactions" aria-label="Decision for My Make pulse"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="02" data-status="unreviewed">
+  <div class="card-head"><span class="number">02</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/02-agenda.html" target="_blank" rel="noopener" aria-label="Open Agenda first prototype in a new tab">
+    <iframe src="mockups/02-agenda.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Agenda first</h3><p>Leads with the next conversations and their teams.</p></div>
+  <div class="reactions" aria-label="Decision for Agenda first"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="03" data-status="unreviewed">
+  <div class="card-head"><span class="number">03</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/03-directory.html" target="_blank" rel="noopener" aria-label="Open Team cards prototype in a new tab">
+    <iframe src="mockups/03-directory.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Team cards</h3><p>Turns the directory into useful destination cards.</p></div>
+  <div class="reactions" aria-label="Decision for Team cards"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="04" data-status="unreviewed">
+  <div class="card-head"><span class="number">04</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/04-gateway.html" target="_blank" rel="noopener" aria-label="Open Resource gateway prototype in a new tab">
+    <iframe src="mockups/04-gateway.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Resource gateway</h3><p>Begins with the resource someone needs.</p></div>
+  <div class="reactions" aria-label="Decision for Resource gateway"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="05" data-status="unreviewed">
+  <div class="card-head"><span class="number">05</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/05-layered.html" target="_blank" rel="noopener" aria-label="Open Layered home prototype in a new tab">
+    <iframe src="mockups/05-layered.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Layered home</h3><p>Serves new and experienced contributors together.</p></div>
+  <div class="reactions" aria-label="Decision for Layered home"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="06" data-status="unreviewed">
+  <div class="card-head"><span class="number">06</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/06-modes.html" target="_blank" rel="noopener" aria-label="Open Audience views prototype in a new tab">
+    <iframe src="mockups/06-modes.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Audience views</h3><p>Uses explicit New, My Make, and All teams views.</p></div>
+  <div class="reactions" aria-label="Decision for Audience views"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="07" data-status="unreviewed">
+  <div class="card-head"><span class="number">07</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/07-timeline.html" target="_blank" rel="noopener" aria-label="Open Make timeline prototype in a new tab">
+    <iframe src="mockups/07-timeline.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Make timeline</h3><p>Combines meetings and publishing chronologically.</p></div>
+  <div class="reactions" aria-label="Decision for Make timeline"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="08" data-status="unreviewed">
+  <div class="card-head"><span class="number">08</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/08-compact.html" target="_blank" rel="noopener" aria-label="Open Compact directory prototype in a new tab">
+    <iframe src="mockups/08-compact.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Compact directory</h3><p>Optimizes for fast team and resource scanning.</p></div>
+  <div class="reactions" aria-label="Decision for Compact directory"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="09" data-status="unreviewed">
+  <div class="card-head"><span class="number">09</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/09-ribbon.html" target="_blank" rel="noopener" aria-label="Open Calendar ribbon prototype in a new tab">
+    <iframe src="mockups/09-ribbon.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Calendar ribbon</h3><p>Keeps the current week persistently visible.</p></div>
+  <div class="reactions" aria-label="Decision for Calendar ribbon"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="10" data-status="unreviewed">
+  <div class="card-head"><span class="number">10</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/10-dashboard.html" target="_blank" rel="noopener" aria-label="Open Contributor dashboard prototype in a new tab">
+    <iframe src="mockups/10-dashboard.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Contributor dashboard</h3><p>Defaults to a personalized selected-team view.</p></div>
+  <div class="reactions" aria-label="Decision for Contributor dashboard"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="11" data-status="unreviewed">
+  <div class="card-head"><span class="number">11</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/11-newsroom.html" target="_blank" rel="noopener" aria-label="Open Make newsroom prototype in a new tab">
+    <iframe src="mockups/11-newsroom.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Make newsroom</h3><p>Gives recent team publishing the strongest weight.</p></div>
+  <div class="reactions" aria-label="Decision for Make newsroom"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="12" data-status="unreviewed">
+  <div class="card-head"><span class="number">12</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/12-matrix.html" target="_blank" rel="noopener" aria-label="Open Activity matrix prototype in a new tab">
+    <iframe src="mockups/12-matrix.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Activity matrix</h3><p>Compares consistent signals across several teams.</p></div>
+  <div class="reactions" aria-label="Decision for Activity matrix"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="13" data-status="unreviewed">
+  <div class="card-head"><span class="number">13</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/13-search.html" target="_blank" rel="noopener" aria-label="Open Find your way prototype in a new tab">
+    <iframe src="mockups/13-search.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Find your way</h3><p>Uses search and resource shortcuts for routing.</p></div>
+  <div class="reactions" aria-label="Decision for Find your way"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="14" data-status="unreviewed">
+  <div class="card-head"><span class="number">14</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/14-rail.html" target="_blank" rel="noopener" aria-label="Open Favorites rail prototype in a new tab">
+    <iframe src="mockups/14-rail.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Favorites rail</h3><p>Keeps favorite teams beside a shared Make feed.</p></div>
+  <div class="reactions" aria-label="Decision for Favorites rail"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="15" data-status="unreviewed">
+  <div class="card-head"><span class="number">15</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/15-workspace.html" target="_blank" rel="noopener" aria-label="Open Team workspaces prototype in a new tab">
+    <iframe src="mockups/15-workspace.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Team workspaces</h3><p>Presents selected teams as compact workspaces.</p></div>
+  <div class="reactions" aria-label="Decision for Team workspaces"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="16" data-status="unreviewed">
+  <div class="card-head"><span class="number">16</span><span class="tier native">WordPress-native</span></div>
+  <a class="preview" href="mockups/16-week.html" target="_blank" rel="noopener" aria-label="Open Week at a glance prototype in a new tab">
+    <iframe src="mockups/16-week.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Week at a glance</h3><p>Organizes the home around the current week.</p></div>
+  <div class="reactions" aria-label="Decision for Week at a glance"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="17" data-status="unreviewed">
+  <div class="card-head"><span class="number">17</span><span class="tier outlier">Outlier</span></div>
+  <a class="preview" href="mockups/17-constellation.html" target="_blank" rel="noopener" aria-label="Open Make constellation prototype in a new tab">
+    <iframe src="mockups/17-constellation.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Make constellation</h3><p>Maps the team network spatially.</p></div>
+  <div class="reactions" aria-label="Decision for Make constellation"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="18" data-status="unreviewed">
+  <div class="card-head"><span class="number">18</span><span class="tier outlier">Outlier</span></div>
+  <a class="preview" href="mockups/18-command.html" target="_blank" rel="noopener" aria-label="Open Contribution console prototype in a new tab">
+    <iframe src="mockups/18-command.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Contribution console</h3><p>Creates a dense keyboard-forward control surface.</p></div>
+  <div class="reactions" aria-label="Decision for Contribution console"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="19" data-status="unreviewed">
+  <div class="card-head"><span class="number">19</span><span class="tier outlier">Outlier</span></div>
+  <a class="preview" href="mockups/19-atlas.html" target="_blank" rel="noopener" aria-label="Open The Make paper prototype in a new tab">
+    <iframe src="mockups/19-atlas.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>The Make paper</h3><p>Treats network activity as an editorial broadsheet.</p></div>
+  <div class="reactions" aria-label="Decision for The Make paper"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article>
+<article class="review-card" draggable="true" data-id="20" data-status="unreviewed">
+  <div class="card-head"><span class="number">20</span><span class="tier outlier">Outlier</span></div>
+  <a class="preview" href="mockups/20-orbital.html" target="_blank" rel="noopener" aria-label="Open Orbit prototype in a new tab">
+    <iframe src="mockups/20-orbital.html" loading="lazy" tabindex="-1" aria-hidden="true" title=""></iframe><span>Open prototype ↗</span>
+  </a>
+  <div class="card-copy"><h3>Orbit</h3><p>Uses an orbital map for teams and signals.</p></div>
+  <div class="reactions" aria-label="Decision for Orbit"><button data-set="keep">Keep</button><button data-set="maybe">Maybe</button><button data-set="kill">Kill</button></div>
+  <details><summary>Add a note</summary><textarea rows="3" data-note placeholder="What works, what does not, or what you want changed"></textarea></details>
+</article></div><p class="empty">Everything has been reviewed.</p></section><div class="decision-grid"><section class="zone" data-zone="keep" aria-labelledby="keep-title"><div class="zone-head"><h2 id="keep-title">Keep</h2><span data-count="keep">0</span></div><div class="card-grid"></div><p class="empty">Nothing kept yet.</p></section><section class="zone" data-zone="maybe" aria-labelledby="maybe-title"><div class="zone-head"><h2 id="maybe-title">Maybe</h2><span data-count="maybe">0</span></div><div class="card-grid"></div><p class="empty">Nothing here yet.</p></section><section class="zone" data-zone="kill" aria-labelledby="kill-title"><div class="zone-head"><h2 id="kill-title">Kill</h2><span data-count="kill">0</span></div><div class="card-grid"></div><p class="empty">Nothing removed yet.</p></section></div></main><div class="sr-live" aria-live="polite"></div><script>
+const KEY='make-wordpress-review-board-v1';
+const boardState=JSON.parse(localStorage.getItem(KEY)||'{}');
+const cards=[...document.querySelectorAll('.review-card')];
+const zones={unreviewed:document.querySelector('[data-zone="unreviewed"] .card-grid'),keep:document.querySelector('[data-zone="keep"] .card-grid'),maybe:document.querySelector('[data-zone="maybe"] .card-grid'),kill:document.querySelector('[data-zone="kill"] .card-grid')};
+function save(){localStorage.setItem(KEY,JSON.stringify(boardState))}
+function move(card,status,announce=true){const id=card.dataset.id;card.dataset.status=status;boardState[id]={...(boardState[id]||{}),status};zones[status].append(card);card.querySelectorAll('[data-set]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===status)));save();update();if(announce)document.querySelector('.sr-live').textContent=card.querySelector('h3').textContent+' moved to '+status}
+function update(){const counts={unreviewed:0,keep:0,maybe:0,kill:0};cards.forEach(c=>counts[c.dataset.status]++);for(const [key,value] of Object.entries(counts)){document.querySelector('[data-count="'+key+'"]').textContent=value}const reviewed=cards.length-counts.unreviewed;document.querySelector('#reviewed').textContent=reviewed;document.querySelector('#meter').style.width=(reviewed/cards.length*100)+'%'}
+cards.forEach(card=>{const saved=boardState[card.dataset.id]||{};const note=card.querySelector('[data-note]');note.value=saved.note||'';if(saved.note)card.querySelector('details').open=true;move(card,saved.status||'unreviewed',false);card.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',card.dataset.id);card.classList.add('dragging')});card.addEventListener('dragend',()=>card.classList.remove('dragging'));card.querySelector('.reactions').addEventListener('click',e=>{const b=e.target.closest('[data-set]');if(b)move(card,b.dataset.set)});note.addEventListener('input',()=>{boardState[card.dataset.id]={...(boardState[card.dataset.id]||{}),note:note.value};save()})});
+document.querySelectorAll('.zone').forEach(zone=>{zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('drag-over')});zone.addEventListener('dragleave',()=>zone.classList.remove('drag-over'));zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('drag-over');const card=document.querySelector('[data-id="'+e.dataTransfer.getData('text/plain')+'"]');if(card)move(card,zone.dataset.zone)})});
+document.querySelector('#zoom').addEventListener('input',e=>document.documentElement.style.setProperty('--card-min',e.target.value+'px'));
+document.querySelector('#clear').addEventListener('click',()=>{if(confirm('Clear all review decisions and notes?')){localStorage.removeItem(KEY);location.reload()}});
+document.querySelector('#download').addEventListener('click',()=>{const payload={exportedAt:new Date().toISOString(),concepts:cards.map(card=>({id:card.dataset.id,title:card.querySelector('h3').textContent,status:card.dataset.status,note:card.querySelector('[data-note]').value}))};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));a.download='make-wordpress-prototype-feedback.json';a.click();URL.revokeObjectURL(a.href)});
+update();
+</script></body></html>
