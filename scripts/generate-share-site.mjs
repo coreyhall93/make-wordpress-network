@@ -74,7 +74,6 @@ for (const direction of directions) {
     .replaceAll('Comparable source-linked signals', 'Comparable team activity')
     .replaceAll('Your WordPress work, in one place.', 'Your WordPress work, together.')
     .replaceAll('Today across Your teams', 'Today across your teams')
-    .replace('<p class="eyebrow">YOUR TEAMS</p><h2>Four compact workspaces</h2>', '<h2>Your teams</h2>')
     .replace(/<div data-panel-set="workbench" data-panel="all" hidden>[\s\S]*?<\/section><\/div><section class="newcomer">/, `${workbenchAllPanel}<section class="newcomer">`)
     .replace(/<div data-panel-set="audience" data-panel="all" hidden>[\s\S]*?<\/section><\/div><\/main><main id="team-view"/, `${audienceAllPanel}</main><main id="team-view"`)
     .replace(/<button class="primary" id="customize-cockpit"[\s\S]*?<\/button>/, '')
@@ -94,6 +93,7 @@ body[data-tier="native"] .hero h1,body[data-tier="native"] .team-boundary h1{fon
 .page{padding-left:clamp(28px,3.5vw,48px);padding-right:clamp(28px,3.5vw,48px)}
 .team-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .team-grid.large{grid-template-columns:repeat(2,minmax(0,1fr))}
+.workbench-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .compact-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
 .team-card,.synth-team-card{min-width:0}
 .switcher{position:fixed;left:0;right:0;width:100vw;max-height:calc(100vh - 90px);overflow:auto;scrollbar-gutter:stable;padding:0;border:0;border-top:1px solid #3c434a;background:#1d2327;box-shadow:0 16px 30px rgba(0,0,0,.28)}
