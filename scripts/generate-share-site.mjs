@@ -91,7 +91,7 @@ body[data-tier="native"] .hero h1,body[data-tier="native"] .team-boundary h1{fon
 .search-hero .search-shell{margin-left:auto;margin-right:auto}
 .search-hero .shortcut-strip{justify-content:center}
 .page{padding-left:clamp(28px,3.5vw,48px);padding-right:clamp(28px,3.5vw,48px)}
-.team-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .team-grid.large{grid-template-columns:repeat(2,minmax(0,1fr))}
 .workbench-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .compact-cards{grid-template-columns:repeat(2,minmax(0,1fr))}
