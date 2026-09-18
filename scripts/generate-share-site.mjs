@@ -57,7 +57,7 @@ const directoryTeam = name => `<article class="directory-team"><div><h3>${teamIc
 const allTeamsDirectory = `<div class="team-directory">${allTeams.map(directoryTeam).join('')}</div>`;
 const workbenchAllPanel = `<div data-panel-set="workbench" data-panel="all" hidden><section><div class="section-head"><div><h2>All teams</h2></div><label class="mini-search">⌕ <input placeholder="Filter teams" aria-label="Filter teams"></label></div>${allTeamsDirectory}</section></div>`;
 const audienceAllPanel = `<div data-panel-set="audience" data-panel="all" hidden><section><div class="section-head"><div><h2>Browse every team</h2><p>All Make WordPress teams, in alphabetical order.</p></div><label class="mini-search">⌕ <input placeholder="Filter teams" aria-label="Filter teams"></label></div>${allTeamsDirectory}</section></div>`;
-const cockpitRail = `<aside class="cockpit-rail"><p class="eyebrow">YOUR TEAMS</p>${selectedTeams.map(name => `<button data-open-team="${slugify(name)}">${teamIcon(name)}<span>${name}</span></button>`).join('')}<div class="rail-widget"><p class="eyebrow">NEXT UP</p><strong>Documentation Contributor Day</strong><span>Tue, Sep 22 · 10:00 AM</span><a href="#">View meeting calendar →</a></div><div class="rail-widget"><p class="eyebrow">KEEP HANDY</p><a href="#">Contributor Handbook</a><a href="#">Contribution pathways</a><a href="#">Team handbooks</a></div></aside>`;
+const cockpitRail = `<aside class="cockpit-rail"><h2 class="rail-heading">Your teams</h2>${selectedTeams.map(name => `<button data-open-team="${slugify(name)}">${teamIcon(name)}<span>${name}</span></button>`).join('')}<div class="rail-widget"><h3 class="rail-widget-heading">Next up</h3><strong>Documentation Contributor Day</strong><span>Tue, Sep 22 · 10:00 AM</span><a href="#">View meeting calendar →</a></div><div class="rail-widget"><h3 class="rail-widget-heading">Keep handy</h3><a href="#">Contributor Handbook</a><a href="#">Contribution pathways</a><a href="#">Team handbooks</a></div></aside>`;
 
 for (const direction of directions) {
   const sourcePath = path.join(projectRoot, 'mockups/synthesis', direction.file);
@@ -136,7 +136,7 @@ body[data-tier="native"] .hero h1,body[data-tier="native"] .team-boundary h1{fon
 .story-grid .story:nth-child(4){grid-column:2/4}
 .cockpit-rail button{display:flex;align-items:center;gap:8px}
 .rail-widget{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
-.rail-widget .eyebrow{margin:0 0 10px}
+.rail-widget-heading{margin:0 0 10px;font:600 14px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 .rail-widget strong,.rail-widget>span{display:block}
 .rail-widget>span{margin-top:3px;color:var(--muted);font-size:13px}
 .rail-widget a{display:block;margin-top:8px;font-size:13px}
@@ -174,7 +174,6 @@ const html = `<!doctype html>
     .site-header a{color:#fff;text-decoration:none;font-size:14px}
     .site-header a:hover{text-decoration:underline}
     .hero{max-width:var(--measure);margin:auto;padding:clamp(48px,6vw,72px) var(--edge) clamp(44px,5vw,64px)}
-    .eyebrow{margin:0 0 14px;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
     h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400}
     h1{max-width:980px;margin:0;font-size:clamp(40px,4.2vw,56px);line-height:1.08;letter-spacing:-.018em;text-wrap:balance}
     .hero-copy{max-width:720px;margin:22px 0 0;font-size:18px;line-height:1.55;color:#3c434a}
@@ -184,7 +183,6 @@ const html = `<!doctype html>
     .story article{background:var(--dark);padding:0 clamp(22px,3vw,42px);border-left:1px solid rgba(255,255,255,.16)}
     .story article:first-child{border-left:0}
     .story article:first-child{padding-left:0}.story article:last-child{padding-right:0}
-    .story .eyebrow{color:#c3c4c7}
     .story h2{margin:0 0 14px;font-size:clamp(25px,2.3vw,32px);line-height:1.18}
     .story p:last-child{margin:0;color:#e2e4e7}
     .directions h2{margin:4px 0 16px;font-size:clamp(30px,3vw,40px);line-height:1.15}
@@ -232,12 +230,12 @@ const html = `<!doctype html>
       <p class="hero-scope">This explores the network home and shared navigation. Individual team landing pages remain separate.</p>
     </section>
     <section class="story" id="problem"><div class="story-inner">
-      <article><p class="eyebrow">THE PROBLEM</p><h2>The network is difficult to see.</h2><p>The current home lists teams, but it is hard to quickly see their next meetings, recent posts, and useful destinations. Once you enter a team site, moving back home or switching teams is not obvious.</p></article>
-      <article><p class="eyebrow">THE BRAINSTORM</p><h2>Show the work.</h2><p>These directions explore personal team views, shared team cards, newcomer routes, search, recent publishing, and a simpler two-row navigation model.</p></article>
-      <article><p class="eyebrow">THE IMPACT</p><h2>Help people find their next move.</h2><p>A clearer network view could reduce navigation friction, improve cross-team awareness, and give both new and experienced contributors a useful starting point.</p></article>
+      <article><h2>The problem</h2><p>The network is difficult to see. The current home lists teams, but it is hard to quickly see their next meetings, recent posts, and useful destinations. Once you enter a team site, moving back home or switching teams is not obvious.</p></article>
+      <article><h2>The brainstorm</h2><p>Show the work. These directions explore personal team views, shared team cards, newcomer routes, search, recent publishing, and a simpler two-row navigation model.</p></article>
+      <article><h2>The impact</h2><p>Help people find their next move. A clearer network view could reduce navigation friction, improve cross-team awareness, and give both new and experienced contributors a useful starting point.</p></article>
     </div></section>
     <section class="directions" id="directions"><div class="directions-inner">
-      <p class="eyebrow">FIVE DIRECTIONS</p><h2>Compare the working ideas.</h2><p class="directions-intro">Use the carousel to scan each direction, then open any full prototype in a new tab.</p>
+      <h2>Compare the working ideas.</h2><p class="directions-intro">Use the carousel to scan each direction, then open any full prototype in a new tab.</p>
       <div class="carousel" aria-roledescription="carousel" aria-label="Five Make WordPress prototype previews">
         <div class="carousel-controls"><button class="carousel-arrow" id="carousel-previous" type="button" aria-label="Previous prototype"><span aria-hidden="true">←</span> <span class="arrow-label">Previous</span></button><div class="carousel-choices" role="group" aria-label="Choose a prototype">${directionChoices}</div><button class="carousel-arrow" id="carousel-next" type="button" aria-label="Next prototype"><span class="arrow-label">Next</span> <span aria-hidden="true">→</span></button></div>
         <div class="viewer-copy"><div><p class="concept-meta"><span id="viewer-id">Concept ${directions[0].id}</span><span id="viewer-tier">${directions[0].tier}</span></p><h3 id="viewer-name">${directions[0].name}</h3><p id="viewer-job">${directions[0].job}</p></div><a id="viewer-link" href="prototypes/${directions[0].file}" target="_blank" rel="noopener">Open full prototype ↗</a></div>
