@@ -5,7 +5,9 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const exportRoot = '/Users/coreyhall/Sol/06-Exports/make-wordpress-redesign/2026-09-17';
 const prototypesRoot = path.join(exportRoot, 'prototypes');
+const previewsRoot = path.join(exportRoot, 'previews');
 fs.mkdirSync(prototypesRoot, { recursive: true });
+fs.mkdirSync(previewsRoot, { recursive: true });
 
 const directions = [
   { id: 'A', file: 'a-my-make-workbench.html', name: 'My Make workbench', tier: 'WordPress-native', job: 'Resume work across the teams you care about.' },
@@ -14,6 +16,11 @@ const directions = [
   { id: 'D', file: 'd-network-newsroom.html', name: 'Network newsroom', tier: 'Exploratory', job: 'See what teams are discussing, publishing, and meeting about now.' },
   { id: 'E', file: 'e-contribution-cockpit.html', name: 'Contribution cockpit', tier: 'Exploratory', job: 'Arrange a compact workspace around the teams you selected.' },
 ];
+
+for (const direction of directions) {
+  const previewFile = direction.file.replace('.html', '.png');
+  fs.copyFileSync(path.join(projectRoot, 'assets/previews', previewFile), path.join(previewsRoot, previewFile));
+}
 
 const selectedTeams = ['Community', 'Design', 'Documentation', 'Training'];
 const allTeams = [
@@ -143,7 +150,8 @@ body[data-tier="native"] .hero h1,body[data-tier="native"] .team-boundary h1{fon
   fs.writeFileSync(targetPath, html);
 }
 
-const directionButtons = directions.map((direction, index) => `<button class="direction-tab${index === 0 ? ' is-active' : ''}" data-direction="${direction.id}" aria-pressed="${index === 0}"><span>${direction.id}</span><strong>${direction.name}</strong></button>`).join('');
+const directionSlides = directions.map((direction, index) => `<article class="carousel-slide" data-slide="${direction.id}" aria-hidden="${index === 0 ? 'false' : 'true'}"><a href="prototypes/${direction.file}" target="_blank" rel="noopener" tabindex="${index === 0 ? '0' : '-1'}"><img src="previews/${direction.file.replace('.html', '.png')}" alt="Preview of ${direction.name}" width="1440" height="960"${index === 0 ? '' : ' loading="lazy"'}></a></article>`).join('');
+const directionChoices = directions.map((direction, index) => `<button class="carousel-choice${index === 0 ? ' is-active' : ''}" data-direction="${direction.id}" aria-pressed="${index === 0}" aria-label="Show ${direction.name}"><span>${direction.id}</span><strong>${direction.name}</strong></button>`).join('');
 const directionData = Object.fromEntries(directions.map(direction => [direction.id, direction]));
 
 const html = `<!doctype html>
@@ -183,27 +191,36 @@ const html = `<!doctype html>
     .directions{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .directions-inner{max-width:var(--measure);margin:auto;padding:clamp(48px,5vw,68px) var(--edge)}
     .directions-intro{max-width:760px;color:var(--muted);font-size:18px}
-    .direction-tabs{display:grid;grid-template-columns:repeat(5,1fr);margin-top:36px;border:1px solid #8c8f94;background:#fff}
-    .direction-tab{min-height:76px;padding:13px 15px;border:0;border-right:1px solid var(--line);background:#fff;color:var(--ink);text-align:left;cursor:pointer}
-    .direction-tab:last-child{border-right:0}
-    .direction-tab span{display:block;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.1em}
-    .direction-tab strong{display:block;margin-top:4px;font-size:14px}
-    .direction-tab:hover{background:#f0f0f1}
-    .direction-tab.is-active{background:var(--ink);color:#fff}.direction-tab.is-active span{color:#c3c4c7}
-    .direction-tab:focus-visible{outline:3px solid #9fb1ff;outline-offset:2px;position:relative;z-index:2}
-    .viewer-copy{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:28px 0 18px}
+    .viewer-copy{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:36px 0 18px}
     .concept-meta{display:flex;gap:10px;margin:0 0 7px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
     .concept-meta span+span::before{content:'·';margin-right:10px}
     .viewer-copy h3{margin:0 0 6px;font-size:30px}
     .viewer-copy p{margin:0;color:var(--muted)}
     .viewer-copy a{display:inline-block;padding:10px 14px;border:1px solid #8c8f94;background:#fff;text-decoration:none;white-space:nowrap}
-    .viewer-shell{height:clamp(720px,82vh,980px);border:1px solid #8c8f94;background:#fff;overflow:hidden}
-    .viewer-shell iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+    .carousel{position:relative}
+    .carousel-window{overflow:hidden;border:1px solid #8c8f94;background:#fff}
+    .carousel-track{display:flex;transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+    .carousel-slide{flex:0 0 100%;min-width:0;background:#fff}
+    .carousel-slide a{display:block}
+    .carousel-slide a:focus-visible{outline:3px solid #9fb1ff;outline-offset:-3px}
+    .carousel-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:top}
+    .carousel-controls{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;margin-top:14px;border:1px solid #8c8f94;background:#fff}
+    .carousel-arrow,.carousel-choice{border:0;background:#fff;color:var(--ink);cursor:pointer}
+    .carousel-arrow{min-width:112px;padding:13px 16px;font-weight:650}
+    .carousel-arrow:first-child{border-right:1px solid var(--line)}
+    .carousel-arrow:last-child{border-left:1px solid var(--line)}
+    .carousel-choices{display:grid;grid-template-columns:repeat(5,1fr)}
+    .carousel-choice{min-width:0;padding:10px 8px;border-right:1px solid var(--line);text-align:center}
+    .carousel-choice:last-child{border-right:0}
+    .carousel-choice span{display:block;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.1em}
+    .carousel-choice strong{display:block;margin-top:2px;overflow:hidden;font-size:12px;text-overflow:ellipsis;white-space:nowrap}
+    .carousel-arrow:hover,.carousel-choice:hover{background:#f0f0f1}
+    .carousel-choice.is-active{background:var(--ink);color:#fff}.carousel-choice.is-active span{color:#c3c4c7}
+    .carousel-arrow:focus-visible,.carousel-choice:focus-visible{outline:3px solid #9fb1ff;outline-offset:-3px;position:relative;z-index:2}
     footer{padding:34px var(--edge);background:var(--dark);color:#c3c4c7;text-align:center;font-size:14px}
-    @media(max-width:1050px){.direction-tabs{grid-template-columns:repeat(3,1fr)}.direction-tab:nth-child(3){border-right:0}.direction-tab:nth-child(n+4){border-top:1px solid var(--line)}.direction-tab:nth-child(5){border-right:0}.viewer-shell{height:760px}}
-    @media(max-width:820px){.site-header nav a:first-child{display:none}.story-inner{grid-template-columns:1fr;gap:32px}.story article,.story article:first-child,.story article:last-child{padding:0;border-left:0}.direction-tabs{grid-template-columns:1fr 1fr}.direction-tab,.direction-tab:nth-child(3),.direction-tab:nth-child(5){border-right:1px solid var(--line);border-top:1px solid var(--line)}.direction-tab:nth-child(-n+2){border-top:0}.direction-tab:nth-child(2n){border-right:0}.direction-tab:last-child{grid-column:1/-1;border-right:0}.viewer-copy{grid-template-columns:1fr}.viewer-copy a{justify-self:start}.viewer-shell{height:700px}}
-    @media(max-width:560px){.site-header{padding:14px 20px;align-items:flex-start}.site-header nav{display:none}.hero{padding-top:44px}.story-inner,.directions-inner{padding-left:20px;padding-right:20px}.direction-tabs{grid-template-columns:1fr}.direction-tab,.direction-tab:nth-child(n){grid-column:auto;border:0;border-top:1px solid var(--line)}.direction-tab:first-child{border-top:0}.viewer-shell{height:620px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    @media(max-width:820px){.site-header nav a:first-child{display:none}.story-inner{grid-template-columns:1fr;gap:32px}.story article,.story article:first-child,.story article:last-child{padding:0;border-left:0}.viewer-copy{grid-template-columns:1fr}.viewer-copy a{justify-self:start}.carousel-arrow{min-width:64px}.arrow-label,.carousel-choice strong{display:none}}
+    @media(max-width:560px){.site-header{padding:14px 20px;align-items:flex-start}.site-header nav{display:none}.hero{padding-top:44px}.story-inner,.directions-inner{padding-left:20px;padding-right:20px}.carousel-controls{grid-template-columns:54px 1fr 54px}.carousel-arrow{min-width:0;padding:11px 8px}.carousel-choice{padding:9px 4px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.carousel-track{transition:none}}
   </style>
 </head>
 <body>
@@ -220,33 +237,44 @@ const html = `<!doctype html>
       <article><p class="eyebrow">THE IMPACT</p><h2>Help people find their next move.</h2><p>A clearer network view could reduce navigation friction, improve cross-team awareness, and give both new and experienced contributors a useful starting point.</p></article>
     </div></section>
     <section class="directions" id="directions"><div class="directions-inner">
-      <p class="eyebrow">FIVE DIRECTIONS</p><h2>Compare the working ideas.</h2><p class="directions-intro">Choose a direction, explore it below, or open the full prototype in a new tab.</p>
-      <div class="direction-tabs" role="group" aria-label="Choose a prototype">${directionButtons}</div>
+      <p class="eyebrow">FIVE DIRECTIONS</p><h2>Compare the working ideas.</h2><p class="directions-intro">Use the carousel to scan each direction, then open any full prototype in a new tab.</p>
       <div class="viewer-copy"><div><p class="concept-meta"><span id="viewer-id">Concept ${directions[0].id}</span><span id="viewer-tier">${directions[0].tier}</span></p><h3 id="viewer-name">${directions[0].name}</h3><p id="viewer-job">${directions[0].job}</p></div><a id="viewer-link" href="prototypes/${directions[0].file}" target="_blank" rel="noopener">Open full prototype ↗</a></div>
-      <div class="viewer-shell"><iframe id="prototype-viewer" src="prototypes/${directions[0].file}" title="${directions[0].name} prototype"></iframe></div>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Five Make WordPress prototype previews">
+        <div class="carousel-window"><div class="carousel-track">${directionSlides}</div></div>
+        <div class="carousel-controls"><button class="carousel-arrow" id="carousel-previous" type="button" aria-label="Previous prototype"><span aria-hidden="true">←</span> <span class="arrow-label">Previous</span></button><div class="carousel-choices" role="group" aria-label="Choose a prototype">${directionChoices}</div><button class="carousel-arrow" id="carousel-next" type="button" aria-label="Next prototype"><span class="arrow-label">Next</span> <span aria-hidden="true">→</span></button></div>
+      </div>
     </div></section>
   </main>
   <footer>Working Make WordPress network prototype · Representative content only</footer>
   <script>
     const directions=${JSON.stringify(directionData)};
     const buttons=[...document.querySelectorAll('[data-direction]')];
-    const viewer=document.querySelector('#prototype-viewer');
+    const slides=[...document.querySelectorAll('[data-slide]')];
+    const track=document.querySelector('.carousel-track');
+    const carousel=document.querySelector('.carousel');
+    let activeIndex=0;
     const conceptId=document.querySelector('#viewer-id');
     const tier=document.querySelector('#viewer-tier');
     const name=document.querySelector('#viewer-name');
     const job=document.querySelector('#viewer-job');
     const link=document.querySelector('#viewer-link');
-    buttons.forEach(button=>button.addEventListener('click',()=>{
-      const direction=directions[button.dataset.direction];
-      buttons.forEach(item=>{const active=item===button;item.classList.toggle('is-active',active);item.setAttribute('aria-pressed',String(active))});
-      viewer.src='prototypes/'+direction.file;
-      viewer.title=direction.name+' prototype';
+    const showDirection=index=>{
+      activeIndex=(index+slides.length)%slides.length;
+      const activeSlide=slides[activeIndex];
+      const direction=directions[activeSlide.dataset.slide];
+      track.style.transform='translateX(-'+(activeIndex*100)+'%)';
+      slides.forEach((slide,slideIndex)=>{const active=slideIndex===activeIndex;slide.setAttribute('aria-hidden',String(!active));slide.querySelector('a').tabIndex=active?0:-1});
+      buttons.forEach((button,buttonIndex)=>{const active=buttonIndex===activeIndex;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active))});
       conceptId.textContent='Concept '+direction.id;
       tier.textContent=direction.tier;
       name.textContent=direction.name;
       job.textContent=direction.job;
       link.href='prototypes/'+direction.file;
-    }));
+    };
+    buttons.forEach((button,index)=>button.addEventListener('click',()=>showDirection(index)));
+    document.querySelector('#carousel-previous').addEventListener('click',()=>showDirection(activeIndex-1));
+    document.querySelector('#carousel-next').addEventListener('click',()=>showDirection(activeIndex+1));
+    carousel.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showDirection(activeIndex+(event.key==='ArrowLeft'?-1:1))}});
   </script>
 </body>
 </html>`;

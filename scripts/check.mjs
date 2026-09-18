@@ -19,5 +19,10 @@ for(const file of synthesisFiles){const filePath=path.join(synthesisDir,file);if
 const synthesisIndex=path.join(synthesisDir,'index.html');
 if(!fs.existsSync(synthesisIndex)) failures.push('Missing synthesis gallery');
 else { const synthesis=fs.readFileSync(synthesisIndex,'utf8'); const synthesisLinks=(synthesis.match(/target="_blank" rel="noopener"/g)||[]).length; if(synthesisLinks!==10) failures.push(`Expected 10 synthesis new-tab links, found ${synthesisLinks}`); }
+const shareRoot='/Users/coreyhall/Sol/06-Exports/make-wordpress-redesign/2026-09-17';
+const shareIndex=path.join(shareRoot,'index.html');
+if(!fs.existsSync(shareIndex)) failures.push('Missing generated share site');
+else { const share=fs.readFileSync(shareIndex,'utf8'); for(const marker of ['class="carousel-track"','id="carousel-previous"','id="carousel-next"','showDirection(activeIndex+1)']) if(!share.includes(marker)) failures.push(`Share site missing ${marker}`); if(share.includes('<iframe')) failures.push('Share site still contains an iframe'); const previewImages=(share.match(/<img src="previews\//g)||[]).length; if(previewImages!==5) failures.push(`Expected 5 carousel preview images, found ${previewImages}`); }
+for(const file of synthesisFiles){const preview=path.join(shareRoot,'previews',file.replace('.html','.png'));if(!fs.existsSync(preview)) failures.push(`Missing share preview ${path.basename(preview)}`)}
 if(failures.length){console.error(failures.join('\n'));process.exit(1)}
 console.log(`OK: ${files.length} original prototypes, a persistent 20-card review board, and ${synthesisFiles.length} synthesis prototypes.`);
