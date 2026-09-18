@@ -191,7 +191,7 @@ const html = `<!doctype html>
     .directions{background:var(--soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .directions-inner{max-width:var(--measure);margin:auto;padding:clamp(48px,5vw,68px) var(--edge)}
     .directions-intro{max-width:760px;color:var(--muted);font-size:18px}
-    .viewer-copy{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:36px 0 18px}
+    .viewer-copy{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:end;padding:24px 0 18px}
     .concept-meta{display:flex;gap:10px;margin:0 0 7px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
     .concept-meta span+span::before{content:'·';margin-right:10px}
     .viewer-copy h3{margin:0 0 6px;font-size:30px}
@@ -204,7 +204,7 @@ const html = `<!doctype html>
     .carousel-slide a{display:block}
     .carousel-slide a:focus-visible{outline:3px solid #9fb1ff;outline-offset:-3px}
     .carousel-slide img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:top}
-    .carousel-controls{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;margin-top:14px;border:1px solid #8c8f94;background:#fff}
+    .carousel-controls{display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;margin-top:32px;border:1px solid #8c8f94;background:#fff}
     .carousel-arrow,.carousel-choice{border:0;background:#fff;color:var(--ink);cursor:pointer}
     .carousel-arrow{min-width:112px;padding:13px 16px;font-weight:650}
     .carousel-arrow:first-child{border-right:1px solid var(--line)}
@@ -238,10 +238,10 @@ const html = `<!doctype html>
     </div></section>
     <section class="directions" id="directions"><div class="directions-inner">
       <p class="eyebrow">FIVE DIRECTIONS</p><h2>Compare the working ideas.</h2><p class="directions-intro">Use the carousel to scan each direction, then open any full prototype in a new tab.</p>
-      <div class="viewer-copy"><div><p class="concept-meta"><span id="viewer-id">Concept ${directions[0].id}</span><span id="viewer-tier">${directions[0].tier}</span></p><h3 id="viewer-name">${directions[0].name}</h3><p id="viewer-job">${directions[0].job}</p></div><a id="viewer-link" href="prototypes/${directions[0].file}" target="_blank" rel="noopener">Open full prototype ↗</a></div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Five Make WordPress prototype previews">
-        <div class="carousel-window"><div class="carousel-track">${directionSlides}</div></div>
         <div class="carousel-controls"><button class="carousel-arrow" id="carousel-previous" type="button" aria-label="Previous prototype"><span aria-hidden="true">←</span> <span class="arrow-label">Previous</span></button><div class="carousel-choices" role="group" aria-label="Choose a prototype">${directionChoices}</div><button class="carousel-arrow" id="carousel-next" type="button" aria-label="Next prototype"><span class="arrow-label">Next</span> <span aria-hidden="true">→</span></button></div>
+        <div class="viewer-copy"><div><p class="concept-meta"><span id="viewer-id">Concept ${directions[0].id}</span><span id="viewer-tier">${directions[0].tier}</span></p><h3 id="viewer-name">${directions[0].name}</h3><p id="viewer-job">${directions[0].job}</p></div><a id="viewer-link" href="prototypes/${directions[0].file}" target="_blank" rel="noopener">Open full prototype ↗</a></div>
+        <div class="carousel-window"><div class="carousel-track">${directionSlides}</div></div>
       </div>
     </div></section>
   </main>
